@@ -8,7 +8,3 @@ module.exports.addNote = ()=>{
     return 'New note';
 };
 
-module.exports.math = (a, b) => {
-    var sum = a + b;
-    return sum;
-}
