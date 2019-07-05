@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jeffreybare30/Node#readme",
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "yargs": "^11.0.0"
   }
 }
