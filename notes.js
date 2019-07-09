@@ -15,11 +15,11 @@ var addNote = (title, body) => {
     //console.log('Note: ', body);
     //console.log('Adding note', title, body);
 
+    var notes = [];
+
     var notesString = fs.readFileSync('notes-data.json');
     notes = JSON.parse(notesString);
     
-
-    var notes = [];
     var note = {
         title,
         body
