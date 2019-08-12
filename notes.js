@@ -15,18 +15,22 @@ var addNote = (title, body) => {
     //console.log('Note: ', body);
     //console.log('Adding note', title, body);
 
-    var notes = [];
+    var notes = fetchNotes();
 
-    var notesString = fs.readFileSync('notes-data.json');
-    notes = JSON.parse(notesString);
-    
     var note = {
         title,
         body
     };
-
-    notes.push(note);
-    fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+    
+    console.log("Title: " + note.title + " body: " + note.body);
+    var duplicateNotes = notes.filter((note) => note.title === title);
+    console.log("Length of Notes = " + duplicateNotes.length);
+    if (duplicateNotes.length === 0){
+        console.log("No Duplicates Found");
+        notes.push(note);
+        saveNotes(notes);
+        return note;
+    };
 };
 
 var getAll = () => {
@@ -40,6 +44,20 @@ var getNote = (title) => {
 var removeNote = (title) => {
     console.log('Removing note: ', title);
 }
+
+var saveNotes = (notes) => {
+    fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+}
+
+var fetchNotes = () => {
+    console.log("inside of FetchNotes");
+    try{
+        var notesString = fs.readFileSync('notes-data.json');
+        return JSON.parse(notesString);
+    }catch (e){
+        return [];
+    }
+};
 
 module.exports = {
     addNote,
