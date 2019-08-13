@@ -32,10 +32,25 @@ if (command === 'add'){
     notes.getAll();
 } else if (command === 'read'){
     //console.log('Fetching Notes');
-    notes.getNote(argv.title);
+    //notes.getNote(argv.title);
+    var noteRead = notes.getNote(argv.title);
+    var message = noteRead ? 'Note was read' : 'Note not found';
+    console.log(message);
+    /*if (note){
+        console.log("Note Found");
+        console.log("--");
+        console.log("Title: " + note.title);
+        console.log("Body: " + note.body);
+    } else {
+        console.log("Note not found with title: " + argv.title);
+    }
+    */
 } else if (command === 'remove'){
     //console.log('Deleting Notes');
-    notes.removeNote(argv.title);
+    //notes.removeNote(argv.title, argv.body);
+    var noteRemoved = notes.removeNote(argv.title);
+    var message = noteRemoved ? 'Note was removed' : 'Note not found';
+    console.log(message);
 } else {
     console.log('Command not recognized');
 }

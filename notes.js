@@ -39,6 +39,13 @@ var getAll = () => {
 
 var getNote = (title) => {
     console.log('Getting note: ', title);
+    var notes = fetchNotes();
+    var note = {
+        title,
+    };
+    var returnedNote = notes.filter((note) => note.title === title);
+    console.log("Note found " + returnedNote);
+    return returnedNote;
 };
 
 var removeNote = (title, body) => {
@@ -49,6 +56,7 @@ var removeNote = (title, body) => {
     var filteredNotes = notes.filter((note) => note.title !== title);
     //save new notes array
     saveNotes(filteredNotes);
+    return notes.length !== filteredNotes.length;
 
 }
 
